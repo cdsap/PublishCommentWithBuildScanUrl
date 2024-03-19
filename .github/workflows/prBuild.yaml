@@ -15,12 +15,8 @@ jobs:
       id: read_file
       run: |
         ./gradlew :help
-        gradle_exit_code=$?
         content="$(cat temp_build_scan_url.txt)"
-        echo "aloooooo"
-        echo $content
         echo "::set-output name=content::$content"
-        exit $gradle_exit_code
       env:
         PR_CI_BUILD: true
         GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}  
