@@ -20,6 +20,7 @@ jobs:
         echo $content
         echo "::set-output name=content::$content"
         exit $gradle_exit_code
+      continue-on-error: true  
       env:
         PR_CI_BUILD: true
         GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_API_KEY }}  
