@@ -15,6 +15,7 @@ jobs:
       id: read_file
       run: |
         ./gradlew assembleDebug
+        ls
         content="$(cat temp_build_scan_url.txt)"
         echo $content
         echo "::set-output name=content::$content"
