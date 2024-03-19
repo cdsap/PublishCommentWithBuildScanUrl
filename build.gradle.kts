@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 }
-
+println(providers.environmentVariable("PR_CI_BUILD").isPresent)
 if (providers.environmentVariable("PR_CI_BUILD").isPresent) {
     rootProject.buildScan {
         this.buildScanPublished {
