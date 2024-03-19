@@ -6,8 +6,8 @@ plugins {
 
 if (providers.environmentVariable("PR_CI_BUILD").isPresent) {
     rootProject.buildScan {
-        this.buildScanPublished {
-            File("temp_build_scan_url.txt").writeText(this.buildScanUri.toString())
+        buildScanPublished {
+            File("temp_build_scan_url.txt").writeText(buildScanUri.toString())
         }
     }
 }
