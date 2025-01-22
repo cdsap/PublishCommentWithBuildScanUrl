@@ -25,7 +25,7 @@ jobs:
     
     environment:
       PR_CI_BUILD: true
-      GRADLE_ENTERPRISE_ACCESS_KEY: ${GE_API_KEY}
+      DEVELOCITY_ACCESS_KEY: ${DEVELOCITY_ACCESS_KEY}
 
 workflows:
   version: 2
