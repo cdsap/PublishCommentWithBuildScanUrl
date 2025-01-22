@@ -1,5 +1,9 @@
 version: 2.1
 
+on:
+  pull_request:
+    types: [opened, reopened]
+
 jobs:
   build:
     docker:
@@ -20,7 +24,7 @@ jobs:
                 -H "Authorization: token ${GITHUB_TOKEN}" \
                 -H "Accept: application/vnd.github.v3+json" \
                 https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/issues/${PR_NUMBER}/comments \
-                -d "{\"body\":\"🔄 CircleCI build completed\"}"
+                -d "{\"body\":\"🔄 CircleCI build completed yeah\"}"
             fi
     
     environment:
