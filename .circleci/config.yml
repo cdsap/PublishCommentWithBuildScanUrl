@@ -18,7 +18,6 @@ jobs:
       - run:
           name: Comment on PR
           command: |
-            ls
             PR_NUMBER=$(echo $CIRCLE_PULL_REQUEST | grep -o '[0-9]*$')
             if [ ! -z "$PR_NUMBER" ]; then
               BUILD_SCAN_URL=$(cat temp_build_scan_url.txt)
