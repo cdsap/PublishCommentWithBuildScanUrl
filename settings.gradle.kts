@@ -12,18 +12,15 @@ pluginManagement {
     }
 }
 plugins {
-    id("com.gradle.enterprise") version "3.16.1"
+    id("com.gradle.develocity") version "3.19.1"
 }
 
 gradleEnterprise {
     server = "http://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
     buildScan {
-        publishAlways()
-        capture {
-            isTaskInputFiles = true
-        }
-        isUploadInBackground = System.getenv("CI") == null
+uploadInBackground.set(false)
+        publishing { true }
     }
 }
 dependencyResolutionManagement {
