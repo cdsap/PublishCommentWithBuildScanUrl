@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Build with Gradle
           command: |
-            ./gradlew :help
+            ./gradlew :app:assembleDebug
             
       - run:
           name: Comment on PR
