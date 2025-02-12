@@ -30,7 +30,6 @@ jobs:
     
     environment:
       PR_CI_BUILD: true
-      DEVELOCITY_ACCESS_KEY: ${DEVELOCITY_ACCESS_KEY}
 
 workflows:
   version: 2
