@@ -15,7 +15,7 @@ plugins {
     id("com.gradle.develocity") version "3.19.1"
 }
 
-gradleEnterprise {
+develocity {
     server = "http://ge.solutions-team.gradle.com"
     allowUntrustedServer = true
     buildScan {
