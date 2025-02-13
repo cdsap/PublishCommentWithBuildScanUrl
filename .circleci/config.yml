@@ -1,0 +1,42 @@
+version: 2.1
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    docker:
+      - image: cimg/android:2025.02
+    steps:
+      - checkout
+      - run:
+          name: Build with Gradle
+          command: |
+             cat /proc/meminfo  
+             ./gradlew :app:assembleDebug
+             cat /proc/meminfo
+            
+      - run:
+          name: Comment on PR
+          command: |
+            cat /proc/meminfo
+            PR_NUMBER=$(echo $CIRCLE_PULL_REQUEST | grep -o '[0-9]*$')
+            if [ ! -z "$PR_NUMBER" ]; then
+              BUILD_SCAN_URL=$(cat temp_build_scan_url.txt)
+              curl -X POST \
+                -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/issues/${PR_NUMBER}/comments \
+                -d "{\"body\":\"🔄 CircleCI build completed yeah\n\nBuild Scan URL: ${BUILD_SCAN_URL}\"}"
+            fi
+             cat /proc/meminfo
+    
+    environment:
+      PR_CI_BUILD: true
+
+workflows:
+  version: 2
+  pr_build:
+    jobs:
+      - build 
