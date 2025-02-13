@@ -14,8 +14,8 @@ jobs:
           name: Build with Gradle
           command: |
              cat /proc/meminfo  
-            ./gradlew :app:assembleDebug
-            cat /proc/meminfo
+             ./gradlew :app:assembleDebug
+             cat /proc/meminfo
             
       - run:
           name: Comment on PR
